@@ -8,6 +8,7 @@
 	<packaging>pom</packaging>
 
 	<name>Twitter Sample</name>
+	<url>https://github.com/nrodrigues/twitter-sample</url>
 	<description>Sample application to showcase usage of a number of API's</description>
 
 	<scm>
