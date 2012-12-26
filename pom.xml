@@ -339,5 +339,6 @@
 	<modules>
 		<module>twitter-data-model</module>
 		<module>twitter-repositories</module>
+		<module>twitter-services</module>
 	</modules>
 </project>
