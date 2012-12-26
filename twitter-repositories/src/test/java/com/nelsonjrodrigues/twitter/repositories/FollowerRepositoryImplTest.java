@@ -1,5 +1,6 @@
 package com.nelsonjrodrigues.twitter.repositories;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.junit.After;
@@ -40,7 +41,7 @@ public class FollowerRepositoryImplTest extends AbstractRepositoryTest {
 	}
 
 	@Test
-	public void testAddUser() {
+	public void testAddFollower() {
 		Follower follower = new Follower();
 
 		follower.setFollowerId(followedUser.getId());
@@ -60,7 +61,7 @@ public class FollowerRepositoryImplTest extends AbstractRepositoryTest {
 	}
 
 	@Test
-	public void testRetrieveUser() {
+	public void testRetrieveFollower() {
 		String id = UUID.randomUUID().toString();
 
 		simpleJdbcTemplate.update("insert into Followers values (?, ?, ?)", id, followerUser.getId(), followedUser.getId());
@@ -71,6 +72,20 @@ public class FollowerRepositoryImplTest extends AbstractRepositoryTest {
 		Assert.assertEquals(id, retrievedFollower.getId());
 		Assert.assertEquals(followerUser.getId(), retrievedFollower.getFollowerId());
 		Assert.assertEquals(followedUser.getId(), retrievedFollower.getUserId());
+
+	}
+
+	@Test
+	public void testFindFollowers() {
+		String id = UUID.randomUUID().toString();
+
+		simpleJdbcTemplate.update("insert into Followers values (?, ?, ?)", id, followerUser.getId(), followedUser.getId());
+
+		List<User> followers = repository.findFollowers(followedUser.getId());
+
+		Assert.assertNotNull(followers);
+		Assert.assertEquals(1, followers.size());
+		Assert.assertEquals(followerUser, followers.get(0));
 
 	}
 
