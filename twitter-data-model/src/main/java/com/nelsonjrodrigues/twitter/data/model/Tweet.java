@@ -3,36 +3,46 @@ package com.nelsonjrodrigues.twitter.data.model;
 import java.util.Date;
 import java.util.Objects;
 
+import org.springframework.util.Assert;
+
 import com.nelsonjrodrigues.twitter.data.model.base.BaseDomain;
 
 public class Tweet extends BaseDomain {
 
-	private User author;
+	private String authorId;
 
-	private Date date;
+	private Date creationDate;
 
 	private String content;
 
-	public Tweet() {
-
+	public String getAuthorId() {
+		return authorId;
 	}
 
-	Tweet(User author, Date date, String content) {
-		Objects.requireNonNull(author);
-		Objects.requireNonNull(date);
-		Objects.requireNonNull(content);
+	public void setAuthorId(String authorId) {
+		Assert.hasText(authorId);
+
+		this.authorId = authorId;
 	}
 
-	public User getAuthor() {
-		return author;
+	public Date getCreationDate() {
+		return creationDate;
 	}
 
-	public Date getDate() {
-		return date;
+	public void setCreationDate(Date creationDate) {
+		Objects.requireNonNull(creationDate);
+
+		this.creationDate = creationDate;
 	}
 
 	public String getContent() {
 		return content;
+	}
+
+	public void setContent(String content) {
+		Assert.hasText(content);
+
+		this.content = content;
 	}
 
 }

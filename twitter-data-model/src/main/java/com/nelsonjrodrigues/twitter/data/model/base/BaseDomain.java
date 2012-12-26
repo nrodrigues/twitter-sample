@@ -8,13 +8,20 @@ import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.core.style.ToStringCreator;
+import org.springframework.util.Assert;
 
 public class BaseDomain {
 
-	private UUID id = UUID.randomUUID();
+	private String id = UUID.randomUUID().toString();
 
-	public UUID getId() {
+	public String getId() {
 		return id;
+	}
+
+	public void setId(String id) {
+		Assert.hasText(id);
+
+		this.id = id;
 	}
 
 	@Override
