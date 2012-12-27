@@ -2,6 +2,18 @@
 
 Base Url: http://twitter-sample.cloudfoundry.com/rest
 
+All resources, except the Login Api, require an API token to be passed in 
+as a query parameter, example:
+
+	http://twitter-sample.cloudfoundry.com/rest/users?token=7de7a22c-1e90-471b-8b55-d0c70ff05df3
+
+## Login Api ##
+
+* Login user
+		
+		POST /login/{id}
+
+		
 ## Users Api ##
 
 * List all users
