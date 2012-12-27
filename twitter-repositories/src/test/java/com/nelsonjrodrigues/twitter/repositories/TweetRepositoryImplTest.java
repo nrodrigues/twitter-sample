@@ -98,7 +98,7 @@ public class TweetRepositoryImplTest extends AbstractRepositoryTest {
 
 		simpleJdbcTemplate.update("insert into Tweets values (?, ?, ?, ?)", id2, followed.getId(), new Date(), content2);
 
-		List<Tweet> timeline = repository.findTweetsByUser(user.getId());
+		List<Tweet> timeline = repository.findTweetsByUserAndSearchTerms(user.getId(), null);
 
 		Assert.assertNotNull(timeline);
 		Assert.assertEquals(2, timeline.size());

@@ -26,8 +26,9 @@ public interface TweetService {
 	 * ordered by creation date
 	 * 
 	 * @param userId
+	 * @param searchTerms
 	 * @return the users timeline
 	 */
-	List<Tweet> timeline(String userId);
+	List<Tweet> timeline(String userId, String searchTerms);
 
 }

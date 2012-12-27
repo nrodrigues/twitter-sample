@@ -7,6 +7,6 @@ import com.nelsonjrodrigues.twitter.repositories.base.BaseRepository;
 
 public interface TweetRepository extends BaseRepository<Tweet> {
 
-	List<Tweet> findTweetsByUser(String userId);
+	List<Tweet> findTweetsByUserAndSearchTerms(String userId, String searchTerms);
 
 }

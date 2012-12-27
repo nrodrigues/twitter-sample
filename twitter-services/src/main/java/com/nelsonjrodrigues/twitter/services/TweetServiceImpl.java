@@ -43,13 +43,13 @@ public class TweetServiceImpl implements TweetService {
 	}
 
 	@Override
-	public List<Tweet> timeline(String userId) {
+	public List<Tweet> timeline(String userId, String searchTerms) {
 		Assert.hasText(userId);
 
 		// make sure id's are valid
 		User user = userRepository.load(userId);
 
-		return tweetRepository.findTweetsByUser(user.getId());
+		return tweetRepository.findTweetsByUserAndSearchTerms(user.getId(), searchTerms);
 	}
 
 }

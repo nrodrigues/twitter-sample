@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nelsonjrodrigues.twitter.data.model.Tweet;
@@ -32,10 +33,10 @@ public class TweetsApi {
 
 	@ResponseBody
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public List<Tweet> timeline(@PathVariable("id") String user) {
+	public List<Tweet> timeline(@PathVariable("id") String user, @RequestParam(value = "search", required = false) String searchTerms) {
 		Assert.hasText(user);
 
-		return tweetService.timeline(user);
+		return tweetService.timeline(user, searchTerms);
 	}
 
 }

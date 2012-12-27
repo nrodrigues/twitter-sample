@@ -58,5 +58,5 @@ Base Url: http://twitter-sample.cloudfoundry.com/rest
 			
 * List tweets
 
-		GET /tweets/{id}
+		GET /tweets/{id}[?search=keyword]
 		
