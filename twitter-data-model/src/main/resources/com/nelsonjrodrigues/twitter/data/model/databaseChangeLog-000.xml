@@ -55,16 +55,26 @@
 			</column>
 
 			<column name="userId" type="java.sql.Types.VARCHAR(36)" remarks="Followed Username">
-				<constraints nullable="false" references="Users" foreignKeyName="FK_FOLLOWED_USER"/>
+				<constraints nullable="false" references="Users" foreignKeyName="FK_FOLLOWED_USER" />
 			</column>
 		</createTable>
 
 	</changeSet>
-	
+
 	<changeSet id="follower-table-uniqueconstraint" author="nrodrigues">
 		<comment>create unique constraint on follower table</comment>
-		
+
 		<addUniqueConstraint tableName="Followers" columnNames="followerId,userId" />
+	</changeSet>
+
+	<changeSet id="apitoken-table" author="nrodrigues">
+		<comment>create table api token</comment>
+
+		<createTable tableName="ApiTokens">
+			<column name="id" type="java.sql.Types.VARCHAR(36)" remarks="UniqueId">
+				<constraints primaryKey="true" />
+			</column>
+		</createTable>
 	</changeSet>
 
 </databaseChangeLog>
