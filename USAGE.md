@@ -8,34 +8,34 @@ Users Api
 ---------
 
 * List all users
-	GET /users
+	`GET /users`
 
 * Create user
-	POST /users
+	`POST /users`
 		
 	* Body example:
-		{ "username": "value" }
+		`{ "username": "value" }`
 	
 * Retrieve user by id
-	GET /users/{id}
+	`GET /users/{id}`
 	
 * List followers
-	GET /users/{id}/followers
+	`GET /users/{id}/followers`
 	
 * List following
-	GET /users/{id}/following
+	`GET /users/{id}/following`
 	
 * Follow user
-	POST /users/{id}/following
-	POST /users/{id}/followers
+	`POST /users/{id}/following
+	POST /users/{id}/followers`
 	
 	* Body example:
-		{ "id": "595f05c7-b932-47ba-a427-83c146426837" }
+		`{ "id": "595f05c7-b932-47ba-a427-83c146426837" }`
 		
 * Unfollow user
-	DELETE /users/{id}/following
-	DELETE /users/{id}/followers
+	`DELETE /users/{id}/following
+	DELETE /users/{id}/followers`
 	
 	* Body example:
-		{ "id": "595f05c7-b932-47ba-a427-83c146426837" }
+		`{ "id": "595f05c7-b932-47ba-a427-83c146426837" }`
 		
