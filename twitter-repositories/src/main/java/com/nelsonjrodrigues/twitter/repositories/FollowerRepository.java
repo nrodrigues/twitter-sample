@@ -8,6 +8,9 @@ import com.nelsonjrodrigues.twitter.repositories.base.BaseRepository;
 
 public interface FollowerRepository extends BaseRepository<Follower> {
 
+	List<User> findFollowing(String followerUserId);
+
 	List<User> findFollowers(String followedUserId);
 
+	Follower findFollower(String followedUserId, String followingUserId);
 }

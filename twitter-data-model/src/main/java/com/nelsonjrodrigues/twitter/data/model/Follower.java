@@ -1,7 +1,10 @@
 package com.nelsonjrodrigues.twitter.data.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.nelsonjrodrigues.twitter.data.model.base.BaseDomain;
 
+@XmlRootElement
 public class Follower extends BaseDomain {
 
 	private String followerId;

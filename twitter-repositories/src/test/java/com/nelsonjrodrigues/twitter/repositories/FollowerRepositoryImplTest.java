@@ -76,6 +76,20 @@ public class FollowerRepositoryImplTest extends AbstractRepositoryTest {
 	}
 
 	@Test
+	public void testFindFollowing() {
+		String id = UUID.randomUUID().toString();
+
+		simpleJdbcTemplate.update("insert into Followers values (?, ?, ?)", id, followerUser.getId(), followedUser.getId());
+
+		List<User> following = repository.findFollowing(followerUser.getId());
+
+		Assert.assertNotNull(following);
+		Assert.assertEquals(1, following.size());
+		Assert.assertEquals(followedUser, following.get(0));
+
+	}
+
+	@Test
 	public void testFindFollowers() {
 		String id = UUID.randomUUID().toString();
 
@@ -87,6 +101,19 @@ public class FollowerRepositoryImplTest extends AbstractRepositoryTest {
 		Assert.assertEquals(1, followers.size());
 		Assert.assertEquals(followerUser, followers.get(0));
 
+	}
+
+	@Test
+	public void testFindFollower() {
+		String id = UUID.randomUUID().toString();
+
+		simpleJdbcTemplate.update("insert into Followers values (?, ?, ?)", id, followerUser.getId(), followedUser.getId());
+
+		Follower findFollower = repository.findFollower(followedUser.getId(), followerUser.getId());
+
+		Assert.assertNotNull(findFollower);
+
+		Assert.assertEquals(id, findFollower.getId());
 	}
 
 }

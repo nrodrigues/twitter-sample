@@ -3,10 +3,13 @@ package com.nelsonjrodrigues.twitter.data.model;
 import java.util.Date;
 import java.util.Objects;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.springframework.util.Assert;
 
 import com.nelsonjrodrigues.twitter.data.model.base.BaseDomain;
 
+@XmlRootElement
 public class Tweet extends BaseDomain {
 
 	private String authorId;
