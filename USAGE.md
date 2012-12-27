@@ -24,7 +24,7 @@ as a query parameter, example:
 
 		POST /users
 		
-	* Body example:
+	* Body example (Content-type: application/json):
 
 			{ "username": "value" }
 	
@@ -45,7 +45,7 @@ as a query parameter, example:
 		POST /users/{id}/following
 		POST /users/{id}/followers
 	
-	* Body example:
+	* Body example (Content-type: application/json):
 
 			{ "id": "595f05c7-b932-47ba-a427-83c146426837" }
 		
@@ -54,7 +54,7 @@ as a query parameter, example:
 		DELETE /users/{id}/following
 		DELETE /users/{id}/followers
 	
-	* Body example:
+	* Body example (Content-type: application/json):
 
 			{ "id": "595f05c7-b932-47ba-a427-83c146426837" }
 		
@@ -64,7 +64,7 @@ as a query parameter, example:
 		
 		POST /tweets/{id}
 		
-	* Body example
+	* Body example (Content-type: text/plain):
 	
 			Some tweet
 			
