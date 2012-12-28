@@ -13,9 +13,9 @@ public interface LoginService {
 	/**
 	 * Login a given user
 	 * 
-	 * @param userId
+	 * @param username
 	 * @return an api token valid for further requests
 	 */
-	ApiToken login(String userId);
+	ApiToken login(String username);
 
 }

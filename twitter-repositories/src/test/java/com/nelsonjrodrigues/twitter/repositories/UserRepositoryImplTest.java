@@ -48,4 +48,18 @@ public class UserRepositoryImplTest extends AbstractRepositoryTest {
 
 	}
 
+	@Test
+	public void testFindByUsername() {
+		String id = UUID.randomUUID().toString();
+		String username = "test";
+
+		simpleJdbcTemplate.update("insert into Users values (?, ?)", id, username);
+
+		User retrievedUser = repository.findByUsername(username);
+
+		Assert.assertNotNull(retrievedUser);
+		Assert.assertEquals(id, retrievedUser.getId());
+		Assert.assertEquals(username, retrievedUser.getUsername());
+	}
+
 }

@@ -18,11 +18,11 @@ public class LoginApi {
 	private LoginService service;
 
 	@ResponseBody
-	@RequestMapping("/{id}")
-	public ApiToken login(@PathVariable("id") String userId) {
-		Assert.hasText(userId);
+	@RequestMapping("/{username}")
+	public ApiToken login(@PathVariable("username") String username) {
+		Assert.hasText(username);
 
-		return service.login(userId);
+		return service.login(username);
 	}
 
 }

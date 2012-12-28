@@ -24,7 +24,7 @@ public class LoginServiceImpl implements LoginService {
 		Assert.hasText(userId);
 
 		// make sure id's are valid
-		userRepository.load(userId);
+		userRepository.findByUsername(userId);
 
 		ApiToken token = new ApiToken();
 

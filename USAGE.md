@@ -11,7 +11,7 @@ as a query parameter, example:
 
 * Login user
 		
-		POST /login/{id}
+		POST /login/{username}
 
 		
 ## Users Api ##

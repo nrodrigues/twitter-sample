@@ -5,4 +5,6 @@ import com.nelsonjrodrigues.twitter.repositories.base.BaseRepository;
 
 public interface UserRepository extends BaseRepository<User> {
 
+	User findByUsername(String username);
+
 }
