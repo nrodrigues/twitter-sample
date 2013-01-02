@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
 
 		// make sure id's are valid
 		User followerUser = userRepository.findByUsername(followerUsername);
-		User followedUser = userRepository.load(username);
+		User followedUser = userRepository.findByUsername(username);
 
 		Follower follower = new Follower();
 		follower.setFollowerId(followerUser.getId());
@@ -64,8 +64,8 @@ public class UserServiceImpl implements UserService {
 		Assert.hasText(username);
 
 		// make sure id's are valid
-		User followerUser = userRepository.load(followerUsername);
-		User followedUser = userRepository.load(username);
+		User followerUser = userRepository.findByUsername(followerUsername);
+		User followedUser = userRepository.findByUsername(username);
 
 		Follower findFollower = followerRepository.findFollower(followedUser.getId(), followerUser.getId());
 
