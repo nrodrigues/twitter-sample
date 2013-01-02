@@ -76,5 +76,13 @@
 			</column>
 		</createTable>
 	</changeSet>
+	
+	<changeSet id="first-login" author="nrodrigues">
+		<comment>insert bootstrap login</comment>
+		
+		<insert tableName="ApiTokens">
+			<column name="id" value="d40c96a3-4fb4-42be-900d-b23af05ed8b8" />
+		</insert>
+	</changeSet>
 
 </databaseChangeLog>
