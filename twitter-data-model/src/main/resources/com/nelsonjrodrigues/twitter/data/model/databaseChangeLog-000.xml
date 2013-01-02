@@ -32,7 +32,7 @@
 				<constraints nullable="false" references="Users" foreignKeyName="FK_TWEET_USER" />
 			</column>
 
-			<column name="creationDate" type="java.sql.Types.DATE" remarks="Tweet Creation Date">
+			<column name="creationDate" type="java.sql.Types.TIMESTAMP" remarks="Tweet Creation Date">
 				<constraints nullable="false" />
 			</column>
 
