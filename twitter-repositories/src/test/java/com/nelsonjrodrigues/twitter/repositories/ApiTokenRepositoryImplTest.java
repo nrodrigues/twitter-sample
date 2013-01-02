@@ -15,14 +15,15 @@ public class ApiTokenRepositoryImplTest extends AbstractRepositoryTest {
 	private ApiTokenRepository repository;
 
 	@Test
-	public void testAddUser() {
+	public void testAddToken() {
 		ApiToken token = new ApiToken();
 
 		repository.save(token);
 
 		int rowsInTable = countRowsInTable("ApiTokens");
 
-		Assert.assertEquals(1, rowsInTable);
+		// one of them comes from changelog
+		Assert.assertEquals(2, rowsInTable);
 
 		ApiToken retrievedToken = simpleJdbcTemplate.queryForObject("select * from ApiTokens where id = ?", new BeanPropertyRowMapper<>(
 				ApiToken.class), token.getId());
@@ -31,7 +32,7 @@ public class ApiTokenRepositoryImplTest extends AbstractRepositoryTest {
 	}
 
 	@Test
-	public void testRetrieveUser() {
+	public void testRetrieveToken() {
 		String id = UUID.randomUUID().toString();
 
 		simpleJdbcTemplate.update("insert into ApiTokens values (?)", id);
