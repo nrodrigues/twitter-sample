@@ -62,7 +62,7 @@ as a query parameter, example:
 
 * Post tweet
 		
-		POST /tweets/{id}
+		POST /tweets/{username}
 		
 	* Body example (Content-type: text/plain):
 	
@@ -70,5 +70,5 @@ as a query parameter, example:
 			
 * List tweets
 
-		GET /tweets/{id}[?search=keyword]
+		GET /tweets/{username}[?search=keyword]
 		

@@ -26,20 +26,20 @@ public class TweetsApi {
 
 	@ResponseBody
 	@ResponseStatus(HttpStatus.CREATED)
-	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
-	public Tweet tweet(@PathVariable("id") String user, @RequestBody String content) {
-		Assert.hasText(user);
+	@RequestMapping(value = "/{username}", method = RequestMethod.POST)
+	public Tweet tweet(@PathVariable("username") String username, @RequestBody String content) {
+		Assert.hasText(username);
 		Assert.hasText(content);
 
-		return tweetService.tweet(user, content);
+		return tweetService.tweet(username, content);
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public List<Tweet> timeline(@PathVariable("id") String user, @RequestParam(value = "search", required = false) String searchTerms) {
-		Assert.hasText(user);
+	@RequestMapping(value = "/{username}", method = RequestMethod.GET)
+	public List<Tweet> timeline(@PathVariable("username") String username, @RequestParam(value = "search", required = false) String searchTerms) {
+		Assert.hasText(username);
 
-		return tweetService.timeline(user, searchTerms);
+		return tweetService.timeline(username, searchTerms);
 	}
 
 }

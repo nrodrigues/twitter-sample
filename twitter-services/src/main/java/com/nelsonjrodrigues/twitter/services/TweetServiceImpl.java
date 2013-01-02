@@ -24,12 +24,12 @@ public class TweetServiceImpl implements TweetService {
 	private UserRepository userRepository;
 
 	@Override
-	public Tweet tweet(String userId, String content) {
-		Assert.hasText(userId);
+	public Tweet tweet(String username, String content) {
+		Assert.hasText(username);
 		Assert.hasText(content);
 
 		// make sure id's are valid
-		User user = userRepository.load(userId);
+		User user = userRepository.findByUsername(username);
 
 		Tweet tweet = new Tweet();
 
@@ -43,11 +43,11 @@ public class TweetServiceImpl implements TweetService {
 	}
 
 	@Override
-	public List<Tweet> timeline(String userId, String searchTerms) {
-		Assert.hasText(userId);
+	public List<Tweet> timeline(String username, String searchTerms) {
+		Assert.hasText(username);
 
 		// make sure id's are valid
-		User user = userRepository.load(userId);
+		User user = userRepository.findByUsername(username);
 
 		return tweetRepository.findTweetsByUserAndSearchTerms(user.getId(), searchTerms);
 	}
