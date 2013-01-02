@@ -28,35 +28,35 @@ as a query parameter, example:
 
 			{ "username": "value" }
 	
-* Retrieve user by id
+* Retrieve user by username
 
-		GET /users/{id}
+		GET /users/{username}
 	
 * List followers
 
-		GET /users/{id}/followers
+		GET /users/{username}/followers
 	
 * List following
 
-		GET /users/{id}/following
+		GET /users/{username}/following
 
 * Follow user
 
-		POST /users/{id}/following
-		POST /users/{id}/followers
+		POST /users/{username}/following
+		POST /users/{username}/followers
 	
 	* Body example (Content-type: application/json):
 
-			{ "id": "595f05c7-b932-47ba-a427-83c146426837" }
+			{ "username": "username to follow" }
 		
 * Unfollow user
 
-		DELETE /users/{id}/following
-		DELETE /users/{id}/followers
+		DELETE /users/{username}/following
+		DELETE /users/{username}/followers
 	
 	* Body example (Content-type: application/json):
 
-			{ "id": "595f05c7-b932-47ba-a427-83c146426837" }
+			{ "username": "username to unfollow" }
 		
 ## Tweets Api ##
 

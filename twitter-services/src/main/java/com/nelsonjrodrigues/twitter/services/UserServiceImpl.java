@@ -23,33 +23,33 @@ public class UserServiceImpl implements UserService {
 	private FollowerRepository followerRepository;
 
 	@Override
-	public List<User> followers(String id) {
-		Assert.hasText(id);
+	public List<User> followers(String username) {
+		Assert.hasText(username);
 
 		// make sure id's are valid
-		User user = userRepository.load(id);
+		User user = userRepository.findByUsername(username);
 
 		return followerRepository.findFollowers(user.getId());
 	}
 
 	@Override
-	public List<User> following(String id) {
-		Assert.hasText(id);
+	public List<User> following(String username) {
+		Assert.hasText(username);
 
 		// make sure id's are valid
-		User follower = userRepository.load(id);
+		User follower = userRepository.findByUsername(username);
 
 		return followerRepository.findFollowing(follower.getId());
 	}
 
 	@Override
-	public void follow(String followerId, String id) {
-		Assert.hasText(followerId);
-		Assert.hasText(id);
+	public void follow(String followerUsername, String username) {
+		Assert.hasText(followerUsername);
+		Assert.hasText(username);
 
 		// make sure id's are valid
-		User followerUser = userRepository.load(followerId);
-		User followedUser = userRepository.load(id);
+		User followerUser = userRepository.findByUsername(followerUsername);
+		User followedUser = userRepository.load(username);
 
 		Follower follower = new Follower();
 		follower.setFollowerId(followerUser.getId());
@@ -59,13 +59,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void unfollow(String followerId, String id) {
-		Assert.hasText(followerId);
-		Assert.hasText(id);
+	public void unfollow(String followerUsername, String username) {
+		Assert.hasText(followerUsername);
+		Assert.hasText(username);
 
 		// make sure id's are valid
-		User followerUser = userRepository.load(followerId);
-		User followedUser = userRepository.load(id);
+		User followerUser = userRepository.load(followerUsername);
+		User followedUser = userRepository.load(username);
 
 		Follower findFollower = followerRepository.findFollower(followedUser.getId(), followerUser.getId());
 

@@ -15,39 +15,39 @@ public interface UserService {
 	/**
 	 * Retrieves the list of users following a given user
 	 * 
-	 * @param id
-	 *            the user id to search followers for
+	 * @param username
+	 *            the user username to search followers for
 	 * @return the list
 	 */
-	List<User> followers(String id);
+	List<User> followers(String username);
 
 	/**
 	 * Retrieves the list of users a given user is following
 	 * 
-	 * @param id
-	 *            the user id to search
+	 * @param username
+	 *            the user username to search
 	 * @return
 	 */
-	List<User> following(String id);
+	List<User> following(String username);
 
 	/**
 	 * Start following a user
 	 * 
 	 * @param follower
-	 *            the follower user id
-	 * @param id
-	 *            the followed user id
+	 *            the follower user username
+	 * @param username
+	 *            the followed user username
 	 */
-	void follow(String follower, String id);
+	void follow(String follower, String username);
 
 	/**
 	 * Stop following a user
 	 * 
 	 * @param follower
-	 *            the follower user id
-	 * @param id
-	 *            the followed user id
+	 *            the follower username
+	 * @param username
+	 *            the followed username
 	 */
-	void unfollow(String follower, String id);
+	void unfollow(String follower, String username);
 
 }

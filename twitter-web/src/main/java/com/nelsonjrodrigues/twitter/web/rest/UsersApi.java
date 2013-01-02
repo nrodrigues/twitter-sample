@@ -46,17 +46,17 @@ public class UsersApi {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public User retrieve(@PathVariable("id") String id) {
-		return userRepository.load(id);
+	@RequestMapping(value = "/{username}", method = RequestMethod.GET)
+	public User retrieve(@PathVariable("username") String username) {
+		return userRepository.findByUsername(username);
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/{id}/followers", method = RequestMethod.GET)
-	public List<User> followers(@PathVariable("id") String id) {
-		Assert.hasText(id);
+	@RequestMapping(value = "/{username}/followers", method = RequestMethod.GET)
+	public List<User> followers(@PathVariable("username") String username) {
+		Assert.hasText(username);
 
-		return userService.followers(id);
+		return userService.followers(username);
 	}
 
 	@ResponseStatus(HttpStatus.CREATED)
@@ -65,7 +65,7 @@ public class UsersApi {
 		Objects.requireNonNull(follower);
 		Assert.hasText(followed);
 
-		userService.follow(follower.getId(), followed);
+		userService.follow(follower.getUsername(), followed);
 	}
 
 	@ResponseStatus(HttpStatus.OK)
@@ -74,33 +74,33 @@ public class UsersApi {
 		Objects.requireNonNull(follower);
 		Assert.hasText(followed);
 
-		userService.unfollow(follower.getId(), followed);
+		userService.unfollow(follower.getUsername(), followed);
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/{id}/following", method = RequestMethod.GET)
-	public List<User> following(@PathVariable("id") String id) {
-		Assert.hasText(id);
+	@RequestMapping(value = "/{username}/following", method = RequestMethod.GET)
+	public List<User> following(@PathVariable("username") String username) {
+		Assert.hasText(username);
 
-		return userService.following(id);
+		return userService.following(username);
 	}
 
 	@ResponseStatus(HttpStatus.CREATED)
-	@RequestMapping(value = "/{id}/following", method = RequestMethod.POST)
-	public void follow(@PathVariable("id") String follower, @RequestBody User followed) {
+	@RequestMapping(value = "/{username}/following", method = RequestMethod.POST)
+	public void follow(@PathVariable("username") String follower, @RequestBody User followed) {
 		Assert.hasText(follower);
 		Objects.requireNonNull(followed);
 
-		userService.follow(follower, followed.getId());
+		userService.follow(follower, followed.getUsername());
 	}
 
 	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(value = "/{id}/following", method = RequestMethod.DELETE)
-	public void unfollow(@PathVariable("id") String follower, @RequestBody User followed) {
+	@RequestMapping(value = "/{username}/following", method = RequestMethod.DELETE)
+	public void unfollow(@PathVariable("username") String follower, @RequestBody User followed) {
 		Assert.hasText(follower);
 		Objects.requireNonNull(followed);
 
-		userService.unfollow(follower, followed.getId());
+		userService.unfollow(follower, followed.getUsername());
 	}
 
 }
