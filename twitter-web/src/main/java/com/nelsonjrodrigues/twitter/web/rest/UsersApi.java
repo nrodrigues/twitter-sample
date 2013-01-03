@@ -69,12 +69,12 @@ public class UsersApi {
 	}
 
 	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(value = "/{followed}/followers", method = RequestMethod.DELETE)
-	public void shakeOffFollower(@RequestBody User follower, @PathVariable("followed") String followed) {
-		Objects.requireNonNull(follower);
-		Assert.hasText(followed);
+	@RequestMapping(value = "/{username}/followers/{follower}", method = RequestMethod.DELETE)
+	public void shakeOffFollower(@PathVariable("username") String username, @PathVariable("follower") String follower) {
+		Assert.hasText(follower);
+		Assert.hasText(username);
 
-		userService.unfollow(follower.getUsername(), followed);
+		userService.unfollow(follower, username);
 	}
 
 	@ResponseBody
@@ -95,12 +95,12 @@ public class UsersApi {
 	}
 
 	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(value = "/{username}/following", method = RequestMethod.DELETE)
-	public void unfollow(@PathVariable("username") String follower, @RequestBody User followed) {
+	@RequestMapping(value = "/{follower}/following/{username}", method = RequestMethod.DELETE)
+	public void unfollow(@PathVariable("follower") String follower, @PathVariable String username) {
 		Assert.hasText(follower);
-		Objects.requireNonNull(followed);
+		Assert.hasText(username);
 
-		userService.unfollow(follower, followed.getUsername());
+		userService.unfollow(follower, username);
 	}
 
 }
