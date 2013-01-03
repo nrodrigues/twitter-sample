@@ -20,7 +20,8 @@ public class RestApiExceptionHandler extends AbstractHandlerExceptionResolver {
 			}
 		}
 
-		return null;
+		// return empty model and view to signal handled exception
+		return new ModelAndView();
 	}
 
 }
