@@ -1,6 +1,8 @@
 package com.nelsonjrodrigues.twitter.web.rest;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,13 +87,16 @@ public class UsersApi {
 		return userService.following(username);
 	}
 
+	@ResponseBody
 	@ResponseStatus(HttpStatus.CREATED)
 	@RequestMapping(value = "/{username}/following", method = RequestMethod.POST)
-	public void follow(@PathVariable("username") String follower, @RequestBody User followed) {
+	public Map<?, ?> follow(@PathVariable("username") String follower, @RequestBody User followed) {
 		Assert.hasText(follower);
 		Objects.requireNonNull(followed);
 
 		userService.follow(follower, followed.getUsername());
+
+		return Collections.EMPTY_MAP;
 	}
 
 	@ResponseStatus(HttpStatus.OK)
