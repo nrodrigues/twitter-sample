@@ -1,0 +1,40 @@
+<body>
+    <svg id="canvas"> 
+
+    </svg>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>    
+</body>
+
+
+.canvas {
+   width: 360px;
+    height: 180px;
+}
+
+
+var data = [{x: 1, y: 3}, {x: 2, y: 5}, {x: 3, y: 6}, {x: 4, y: 1},{ x: 7, y: 4},{x: 9, y: 5}];
+
+var svg = d3.selectAll("svg");
+
+svg.selectAll("circle")
+    .data(data)
+   .enter().append("circle")
+	 .attr("cx", function(d) { return d.x * 10; })
+	 .attr("cy", function(d) { return d.y * 10; })
+     .attr("r", 2.5); 
+
+function doAnimation() {
+    svg.selectAll("circle")
+    	.transition()
+    	.attr("cx", function() {return random(360)})
+    	.attr("cy", function() {return random(180)});
+    
+    setTimeout(doAnimation, 1000);
+}  
+
+function random(max) {
+    return Math.floor((Math.random() * max))
+}
+   
+setTimeout(doAnimation, 1000);
